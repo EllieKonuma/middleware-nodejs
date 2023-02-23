@@ -14,9 +14,20 @@ app.get("/products", async (_, res) => {
 });
 
 app.get("/products/:productId", async (req, res) => {
-  const productId = req.params.productId;
+  const { productId } = req.params;
   const product = await client.getProductById(productId);
   res.send(product);
+});
+
+app.get("/users", async (_, res) => {
+  const users = await client.getUsers();
+  res.send(users);
+});
+
+app.get("/users/:userId", async (req, res) => {
+  const { userId } = req.params;
+  const user = await client.getProductById(userId);
+  res.send(user);
 });
 
 // Start server
