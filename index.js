@@ -35,7 +35,7 @@ app.get("/users/:userId", async (req, res) => {
 app.post("/users/:userId/purchase", async (req, res) => {
   const { userId } = req.params;
   const productIds = req.body;
-  const totalPrice = await controller.getProductPrice(userId, productIds);
+  const totalPrice = await controller.getProductsPrice(userId, productIds);
 
   res.send({ total: totalPrice });
 });
