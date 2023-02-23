@@ -18,7 +18,7 @@ npm start
 
 The API is hosted at `http://localhost:3000`
 
-## Get users
+## Get users 👩‍🦰👩‍🦳👩‍🦱
 
 To get all users
 
@@ -44,7 +44,7 @@ To get all users
 ]
 ```
 
-## Get user by ID
+## Get user by ID 👩‍🦰
 
 To get a single user by it's ID
 
@@ -74,7 +74,7 @@ To get a single user by it's ID
 }
 ```
 
-## Get products
+## Get products 🍻
 
 To get all products
 
@@ -100,7 +100,7 @@ To get all products
 ]
 ```
 
-## Get product by ID
+## Get product by ID 🍺
 
 To get a sigle product by it's ID
 
@@ -130,7 +130,7 @@ To get a sigle product by it's ID
 }
 ```
 
-## Get products price
+## Get products price 🤑
 
 To sum all products and multiply for tax
 
@@ -167,3 +167,7 @@ To sum all products and multiply for tax
     "total": <int>
 }
 ```
+___
+Thanks for read! 🥹
+bjs,
+Ellie.
