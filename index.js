@@ -1,11 +1,28 @@
-const port = 3000;
-
 const express = require("express");
-const app = express();
 const bodyParser = require("body-parser");
-const bancoDeDados = require("./bancoDeDados");
+const client = require("./client");
 
+// Setup API
+const port = 3000;
+const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// Define routes
+app.get("/products", async (_, res) => {
+  const products = await client.getProducts();
+  res.send(products);
+});
+
+app.get("/products/:productId", async (req, res) => {
+  const productId = req.params.productId;
+  const product = await client.getProductById(productId);
+  res.send(product);
+});
+
+// Start server
+app.listen(port, () => {
+  console.log(`Servidor está executando na porta ${port}.`);
+});
 
 // app.get("/user/:userId/purchase", (req, res) => {
 //   // let conv = req.query.id.map((id) => getProduto(id)
@@ -13,16 +30,3 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //   // );
 //   res.send({ params: req.params, query: req.query });
 // });
-
-app.get("/products", (req, res) => {
-  res.send(bancoDeDados.getProducts());
-});
-
-app.get("/products", async (req, res) => {
-  console.log(req.query);
-  res.send(bancoDeDados.getProducts());
-});
-
-app.listen(port, () => {
-  console.log(`Servidor está executando na porta ${port}.`);
-});
