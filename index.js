@@ -1,6 +1,7 @@
 const express = require("express");
 const { urlencoded } = require("body-parser");
-const client = require("./client");
+const client = require("./src/client");
+const controller = require("./src/controller");
 
 // Setup API
 const port = 3000;
@@ -10,43 +11,33 @@ app.use(express.json());
 
 // Define routes
 app.get("/products", async (_, res) => {
-  const products = await client.getProducts();
+  const products = await controller.getProducts();
   res.send(products);
 });
 
 app.get("/products/:productId", async (req, res) => {
   const { productId } = req.params;
-  const product = await client.getProductById(productId);
+  const product = await controller.getProductById(productId);
   res.send(product);
 });
 
 app.get("/users", async (_, res) => {
-  const users = await client.getUsers();
+  const users = await controller.getUsers();
   res.send(users);
 });
 
 app.get("/users/:userId", async (req, res) => {
   const { userId } = req.params;
-  const user = await client.getUserById(userId);
+  const user = await controller.getUserById(userId);
   res.send(user);
 });
 
 app.post("/users/:userId/purchase", async (req, res) => {
   const { userId } = req.params;
   const productIds = req.body;
+  const totalPrice = await controller.getProductPrice(userId, productIds);
 
-  const { tax } = await client.getUserById(userId);
-  const products = await Promise.all(
-    productIds.map((id) => client.getProductById(id))
-  );
-
-  const productsPrice = products.reduce(
-    (priceSum, product) => priceSum + product.price,
-    0
-  );
-  const total = ((tax / 100) * productsPrice).toFixed(2);
-
-  res.send({ total: total });
+  res.send({ total: totalPrice });
 });
 
 // Start server

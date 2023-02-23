@@ -1,5 +1,4 @@
 const { default: axios } = require("axios");
-const { response } = require("express");
 
 const apiUrl = "https://mockend.com/juunegreiros/BE-test-api";
 
