@@ -6,7 +6,7 @@ This API is a middleware access another API and can get all users and products o
 
 The only requirement is the NodeJs ^16.16.0 version ✨
 
--<span style="color:#41BA45">**N**</span> [Nodejs](https://nodejs.org/en/download/) <span style="color:#41BA45">**N**</span>
+<span style="color:#41BA45">**N**</span> [Nodejs](https://nodejs.org/en/download/) <span style="color:#41BA45">**N**</span>
 
 ## Running🏃‍♂️🏃‍♀️🏃
 
@@ -34,7 +34,7 @@ To get all users
 
 #### Body
 
-```json
+```js
 [
   {
     "id": <int>,
@@ -66,7 +66,7 @@ To get a single user by it's ID
 
 #### Body
 
-```json
+```js
 {
   "id": <int>,
   "name": <string>,
@@ -90,7 +90,7 @@ To get all products
 
 #### Body
 
-```json
+```js
 [
     {
         "id": <int>,
@@ -122,7 +122,7 @@ To get a sigle product by it's ID
 
 #### Body
 
-```json
+```js
 {
   "id": <int>,
   "name": <string>,
@@ -140,7 +140,7 @@ To sum all products and multiply for tax
 
 #### Body
 
-```json
+```js
 [
     productId<int>,
     productId<int>,
@@ -162,7 +162,7 @@ To sum all products and multiply for tax
 
 #### Body
 
-```json
+```js
 {
     "total": <int>
 }
